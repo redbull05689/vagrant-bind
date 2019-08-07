@@ -4,15 +4,16 @@
 Vagrant.configure(2) do |config|
   config.vm.box = "centos/7"
 
-  config.vm.provision "ansible" do |ansible|
-    ansible.verbose = "vvv"
-    ansible.playbook = "provisioning/playbook.yml"
-    ansible.sudo = "true"
-  end
+  # config.vm.provision "ansible" do |ansible|
+  #   ansible.verbose = "vvv"
+  #   ansible.playbook = "provisioning/playbook.yml"
+  #   ansible.sudo = "true"
+  # end
 
 
   config.vm.provider "virtualbox" do |v|
-	  v.memory = 256
+    v.memory = 256
+    #v.customize [ "modifyvm", :id, "--uartmode1", "disconnected" ]
   end
 
   config.vm.define "ns01" do |ns01|
@@ -30,4 +31,8 @@ Vagrant.configure(2) do |config|
     client.vm.hostname = "client"
   end
 
+  config.vm.define "client2" do |client|
+    client.vm.network "private_network", ip: "192.168.50.16", virtualbox__intnet: "dns"
+    client.vm.hostname = "client2"
+  end
 end
