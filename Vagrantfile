@@ -12,7 +12,7 @@ Vagrant.configure(2) do |config|
 
 
   config.vm.provider "virtualbox" do |v|
-    v.memory = 256
+    v.memory = 512
     #v.customize [ "modifyvm", :id, "--uartmode1", "disconnected" ]
   end
 
@@ -26,9 +26,9 @@ Vagrant.configure(2) do |config|
     ns02.vm.hostname = "ns02"
   end
 
-  config.vm.define "client" do |client|
+  config.vm.define "client1" do |client|
     client.vm.network "private_network", ip: "192.168.50.15", virtualbox__intnet: "dns"
-    client.vm.hostname = "client"
+    client.vm.hostname = "client1"
   end
 
   config.vm.define "client2" do |client|
