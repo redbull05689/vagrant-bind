@@ -22,7 +22,7 @@ web2 смотрит на клиент2
 *) настроить все без выключения selinux Критерии оценки: 4 - основное задание сделано, но есть вопросы 5 - сделано основное задание 6 - выполнено задания со звездочкой
 
 Основное задание
-Запустить стенд командой vagrant up & sudo ansible-playbook provisioning/playbook.yml . 
+Запустить стенд командой vagrant up && sudo ansible-playbook -i provisioning/inventory.yml provisioning/playbook.yml . 
 Проветить роботоспособность командой dig.
 
 Клиент1 - видит обе зоны, но в зоне dns.lab только web1
